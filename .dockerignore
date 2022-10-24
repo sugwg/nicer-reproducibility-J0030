@@ -1,0 +1,13 @@
+eos/*
+j0030_analysis/*
+j0030_analysis_*/*
+J0740+6620*
+output_single_machine/*
+pycbc/*
+pycbc_trials/*
+data/*
+A_NICER_VIEW_OF_PSR_J0030p0451/*
+utils/*
+tutorial/*
+xpsi/*
+.git/*

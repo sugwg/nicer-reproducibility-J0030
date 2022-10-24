@@ -32,13 +32,17 @@ NASA's Neutron Star Interior Composition Explorer (NICER) observed X-ray emissio
 
 * `sugwg-openmpi-1.10.6.tar.gz`: tarball of the openmpi installation in the compute nodes of the `sugwg-condor` cluster. 
 
+* `requirements.txt`: requirted dependencies for PyCBC v1.18.3 used for plotting (based on Python 2.7).
+
 * `openmpiscript`: executable script to be launched via HT Condor while submitting the jobs on the `sugwg-condor` cluster.
 
 * `sshd.sh`: companian script for `openmpiscript`.
 
+* `.singularity.d/env/00-xpsi.sh`: script to activate Conda environment within the Docker container.
+
 * `/plotting_scripts`: scripts to plots the posteriors using PyCBC Inference command `pycbc_plot_posteriors`
-  * `create_hdf_files.py`: creates `.hdf` files from the output of the Bayesian sampler that can be read by PyCBC Inference
-  * `plot_posteriors.sh`: executing `pycbc_plot_posteriors` to generate the plots
+  * `create_hdf_files.py`: creates `.hdf` files from the output of the Bayesian sampler that can be read by PyCBC Inference.
+  * `plot_posteriors.sh`: executing `pycbc_plot_posteriors` to generate the plots.
 
 ## Instructions to run the j0030 analysis code as a job on sugwg-condor
 
