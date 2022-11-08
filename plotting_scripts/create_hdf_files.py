@@ -16,7 +16,7 @@ columns = ['distance', 'mass', 'radius', 'cos_inclination',
 
 ### sugwg-analysis
 # load as structured array
-data = numpy.loadtxt('../j0030_analysis/output/run1_nlive1000_eff0.3_noCONST_noMM_noIS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
+data = numpy.loadtxt('../j0030_analysis_ST_PST/output_9machines/run1_nlive1000_eff0.3_noCONST_noMM_noIS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
 
 # convert to dict
 data = {p: data[p] for p in columns}
@@ -31,7 +31,7 @@ fp.close()
 
 ### broader radius priors
 # load as structured array
-data = numpy.loadtxt('../j0030_analysis_broader_radius_priors/output/run1_nlive1000_eff0.3_noCONST_noMM_npost_equal_weights.dat', dtype=[(p, float) for p in columns])
+data = numpy.loadtxt('../j0030_analysis_ST_PST_broader_radius_priors/output/run1_nlive1000_eff0.3_noCONST_noMM_npost_equal_weights.dat', dtype=[(p, float) for p in columns])
 
 # convert to dict
 data = {p: data[p] for p in columns}
@@ -46,7 +46,7 @@ fp.close()
 
 ### N_live 4000
 # load as structured array
-data = numpy.loadtxt('../j0030_analysis_Nlive4000/output/run1_nlive1000_eff0.3_noCONST_noMM_noIS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
+data = numpy.loadtxt('../j0030_analysis_ST_PST_Nlive4000/output/run1_nlive1000_eff0.3_noCONST_noMM_noIS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
 
 # convert to dict
 data = {p: data[p] for p in columns}
@@ -57,7 +57,21 @@ fp.attrs['static_params'] = []
 fp.attrs['variable_params'] = list(data.keys())
 fp.close()
 
+# Riley et al. Zenodo repository
+# load as structured array
+data = numpy.loadtxt('../../../nicer/data/A_NICER_VIEW_OF_PSR_J0030p0451/ST_PST/run1/run1_nlive1000_eff0.3_noCONST_noMM_noIS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
 
+# convert to dict
+data = {p: data[p] for p in columns}
+
+fp = io.loadfile('ST_PST_zenodo.hdf', 'w', filetype='posterior_file')
+fp.write_samples(data)
+fp.attrs['static_params'] = []
+fp.attrs['variable_params'] = list(data.keys())
+fp.close()
+
+
+#####------------------------------------------------------------
 ## ST+EST model
 
 # names of free parameters ordered as in sample files
@@ -95,27 +109,9 @@ fp.attrs['variable_params'] = list(data.keys())
 fp.close()
 
 
-
-
-
-################### Following files are to compare sugwg analysis with zenodo repository
-# ST+PST
+# Riley et al. Zenodo repository
 # load as structured array
-data = numpy.loadtxt('../data/A_NICER_VIEW_OF_PSR_J0030p0451/ST_PST/run1/run1_nlive1000_eff0.3_noCONST_noMM_noIS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
-
-# convert to dict
-data = {p: data[p] for p in columns}
-
-fp = io.loadfile('ST_PST_zenodo.hdf', 'w', filetype='posterior_file')
-fp.write_samples(data)
-fp.attrs['static_params'] = []
-fp.attrs['variable_params'] = list(data.keys())
-fp.close()
-
-
-# ST+EST
-# load as structured array
-data = numpy.loadtxt('../data/A_NICER_VIEW_OF_PSR_J0030p0451/ST_EST/run1/run1_nlive1000_eff0.3_noCONST_noMM_IS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
+data = numpy.loadtxt('../../../nicer/data/A_NICER_VIEW_OF_PSR_J0030p0451/ST_EST/run1/run1_nlive1000_eff0.3_noCONST_noMM_IS_tol-1post_equal_weights.dat', dtype=[(p, float) for p in columns])
 
 # convert to dict
 data = {p: data[p] for p in columns}
