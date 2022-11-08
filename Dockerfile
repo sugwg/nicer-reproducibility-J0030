@@ -129,16 +129,6 @@ RUN wget https://zenodo.org/record/5506838/files/A_NICER_VIEW_OF_PSR_J0030p0451.
     chmod -R ugo+rx A_NICER_VIEW_OF_PSR_J0030p0451/ && \
     rm -rf A_NICER_VIEW_OF_PSR_J0030p0451.tar.gz
 
-### Install pycbc v1.18.3 for the post-processing and plotting
-COPY requirements.txt /home/xpsi/
-RUN wget https://github.com/gwastro/pycbc/archive/refs/tags/v1.18.3.tar.gz && \
-    tar -xvf v1.18.3.tar.gz && \
-    cd pycbc-1.18.3 && \
-    pip install lscsoft-glue==1.59.3 && \
-    mv /home/xpsi/requirements.txt . && \    
-    pip install -r requirements.txt && \
-    pip install .
-
 RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> /home/xpsi/.bashrc && echo "conda activate xpsi" >> /home/xpsi/.bashrc && \
     mkdir /var/lib/condor && \
     mkdir -p /.singularity.d/env
