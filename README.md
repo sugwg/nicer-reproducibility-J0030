@@ -1,6 +1,6 @@
 # Reproducing the results for NICER observation of PSR~J0030+0451
 
-** Chaitanya Afle<sup>1</sup>, Patrick R. Miles<sup>1</sup>, Silvina Ca\'no-Lores<sup>2</sup>, Collin D. Capano<sup>3,4</sup>, Ingo Tews<sup>5</sup>, Karan Vahi<sup>6</sup>, Duncan A. Brown<sup>1</sup>, Ewa Deelman<sup>6</sup>, Michela Taufer<sup>2</sup> 
+** Chaitanya Afle<sup>1</sup>, Patrick R. Miles<sup>1</sup>, Silvina Caino-Lores<sup>2</sup>, Collin D. Capano<sup>3,4</sup>, Ingo Tews<sup>5</sup>, Karan Vahi<sup>6</sup>, Duncan A. Brown<sup>1</sup>, Ewa Deelman<sup>6</sup>, Michela Taufer<sup>2</sup> 
 
 **<sup>1</sup>Syracuse University**
 
@@ -22,7 +22,7 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unite
 
 ## Abstract
 
-NASA's Neutron Star Interior Composition Explorer (NICER) observed X-ray emission from the pulsar PSR J0030+0451 in 2018. Riley \textit{et al.} reported Bayesian parameter measurements of the mass and the radius of the star using pulse-profile modelling of the X-ray data. In this work we reproduce their result using the open-source software \textit{X-PSI} and the publicly available data. We find that we can reproduce the main result within expected statistical error. We note the challenges we faced in reproducing the results. Additionally, to check the robustness of the results, we modify the original analysis in two ways - by changing the prior distribution for the radius, and by changing the sampler configuration. We find that there is no significant change in measurement of the mass and radius because of either modification. We provide a containerized working environment that facilitates reproduction of the measurements of mass and radius of PSR J0030+0451 using the NICER observations.
+NASA's Neutron Star Interior Composition Explorer (NICER) observed X-ray emission from the pulsar PSR J0030+0451 in 2018. Riley \textit{et al.} reported Bayesian parameter measurements of the mass and the radius of the star using pulse-profile modeling of the X-ray data. In this work we reproduce their result using the open-source software \textit{X-PSI} and the publicly available data. We find that we can reproduce the main result within expected statistical error. We note the challenges we faced in reproducing the results. Additionally, to check the robustness of the results, we modify the original analysis in two ways - by changing the prior distribution for the radius, and by changing the sampler configuration. We find that there is no significant change in measurement of the mass and radius because of either modification. We provide a containerized working environment that facilitates reproduction of the measurements of mass and radius of PSR J0030+0451 using the NICER observations.
 
 ## Summary of contents 
 
@@ -63,7 +63,7 @@ NASA's Neutron Star Interior Composition Explorer (NICER) observed X-ray emissio
    * `sh plot_posteriors.sh`
      This should produce two files (for the two models considered in this work): `ST_PST.png` and `ST_EST.png`. To produce a plot without the nlive = 4000 sampler configuration, delete `ST_PST_reanalysis_nlive4k.hdf:ST_PST_reanalysis_nlive4k` from line 8 of `plot_posteriors.sh` and rerun it. 
 
-Once the files are produced, they can be copied out of the container by using the command (for `ST-PST.png` as an example) `docker cp <containername>:/opt/pycbc/nicer-reproducibility-zenodo/plotting_scripts/ST_PST.png /host/path/target`. Here, the `<containername> can be obtained by using the command `docker ps -a`. 
+Once the files are produced, they can be copied out of the container by using the command (for `ST-PST.png` as an example) `docker cp <containername>:/opt/pycbc/nicer-reproducibility-zenodo/plotting_scripts/ST_PST.png /host/path/target`. Here, the `<containername>` can be obtained by using the command `docker ps -a`. 
 
 ## Instructions to run the j0030 analysis code as a job on sugwg-condor
 
