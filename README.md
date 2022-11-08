@@ -44,6 +44,27 @@ NASA's Neutron Star Interior Composition Explorer (NICER) observed X-ray emissio
   * `create_hdf_files.py`: creates `.hdf` files from the output of the Bayesian sampler that can be read by PyCBC Inference.
   * `plot_posteriors.sh`: executing `pycbc_plot_posteriors` to generate the plots.
 
+## Instructions to produce the posterior corner plot using PyCBC
+
+1. Follow the instructions at https://pycbc.org/pycbc/latest/html/docker.html to launch a docker container with a working PyCBC installation:
+   * `docker pull pycbc/pycbc-el8:latest`
+   * `docker run -it pycbc/pycbc-el8:latest`
+
+2. Get the Riley et al Zenodo files:
+   * `wget https://zenodo.org/record/5506838/files/A_NICER_VIEW_OF_PSR_J0030p0451.tar.gz`
+   * `tar -xzvf A_NICER_VIEW_OF_PSR_J0030p0451.tar.gz`
+
+3. Get the files from Zenodo repository accompanying this article:
+   * `wget <update_the_ZENODO_repository_here>`
+   * `tar -xzvf nicer-reproducibility-zenodo.tar.gz`
+
+4. Plot the posteriors:
+   * `cd nicer-reproducibility-zenodo/plotting_scripts/`
+   * `sh plot_posteriors.sh`
+     This should produce two files (for the two models considered in this work): `ST_PST.png` and `ST_EST.png`. To produce a plot without the nlive = 4000 sampler configuration, delete `ST_PST_reanalysis_nlive4k.hdf:ST_PST_reanalysis_nlive4k` from line 8 of `plot_posteriors.sh` and rerun it. 
+
+Once the files are produced, they can be copied out of the container by using the command (for `ST-PST.png` as an example) `docker cp <containername>:/opt/pycbc/nicer-reproducibility-zenodo/plotting_scripts/ST_PST.png /host/path/target`. Here, the `<containername> can be obtained by using the command `docker ps -a`. 
+
 ## Instructions to run the j0030 analysis code as a job on sugwg-condor
 
 The following instructions are intended to streamline the use of XPSI (https://xpsi-group.github.io/xpsi/index.html) via a Docker container.
