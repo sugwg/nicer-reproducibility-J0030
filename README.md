@@ -55,7 +55,7 @@ NASA's Neutron Star Interior Composition Explorer (NICER) observed X-ray emissio
    * `tar -xzvf A_NICER_VIEW_OF_PSR_J0030p0451.tar.gz`
 
 3. Get the files from Zenodo repository accompanying this article:
-   * `wget <update_the_ZENODO_repository_here>`
+   * `wget https://zenodo.org/records/10563924/files/nicer-reproducibility-zenodo.tar.gz`
    * `tar -xzvf nicer-reproducibility-zenodo.tar.gz`
 
 4. Plot the posteriors:
